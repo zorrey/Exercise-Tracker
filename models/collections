@@ -1,0 +1,27 @@
+const mongoose = require("mongoose");
+
+require('../index');
+
+// Basic Configuration
+mongoose.connect(process.env.DB_URI);
+//console.log(mongoose.connection.readyState);
+const { Schema } = mongoose;
+
+//schema for the added to the user object exercise fields
+const exerciseSchema = new Schema({
+_id: false ,
+description: {type: String, required: true},
+duration:  {type: Number, required: true},
+date: {type: String, default: new Date()} 
+});
+
+//schema for adding user objects to database
+const userSchema = new Schema({
+username : {type: String, unique: true , required: true},
+log : [exerciseSchema]
+});
+
+const Exercise = mongoose.model('Exercise', exerciseSchema);
+const User = mongoose.model('User', userSchema);
+exports.Exercise = Exercise;
+exports.User = User;

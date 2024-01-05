@@ -6,7 +6,6 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css" />
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
-
   <body>
     <div class="container">
       <h1>Exercise tracker</h1>
@@ -34,11 +33,9 @@
     </div>
     <script>
       const exerciseForm = document.getElementById("exercise-form");
-
       exerciseForm.addEventListener("submit", () => {
         const userId = document.getElementById("uid").value;
         exerciseForm.action = `/api/users/${userId}/exercises`;
-
         exerciseForm.submit();
       });
     </script>
